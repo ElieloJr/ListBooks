@@ -107,7 +107,6 @@
 		29E1C13D27E0C8AA00153CC0 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				29E1C13F27E0C8E600153CC0 /* Collection Header */,
 				29E1C13E27E0C8D800153CC0 /* Collection cell */,
 			);
 			path = Collection;
@@ -120,13 +119,6 @@
 				29E1C14127E0C93500153CC0 /* CelulaCollectionViewCell.xib */,
 			);
 			path = "Collection cell";
-			sourceTree = "<group>";
-		};
-		29E1C13F27E0C8E600153CC0 /* Collection Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Collection Header";
 			sourceTree = "<group>";
 		};
 		29E1C14427E0D00600153CC0 /* Sections */ = {

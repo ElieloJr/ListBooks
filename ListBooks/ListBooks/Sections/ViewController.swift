@@ -8,23 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    let viewModel = ViewModel()
+    var viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self // ?
+        viewModel.delegate = self
         viewModel.getData()
         
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
-        
         homeCollectionView.register(UINib(nibName: "CelulaCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CelulaCollectionViewCell")
     }
 }
 extension ViewController: UICollectionViewDelegate {
-    
+    // Implemente aqui funcionalidades para a Collection
+}
+extension ViewController: CellInteraction {
+    func showError(with message: String) {
+        print(message)
+    }
 }
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -32,7 +35,9 @@ extension ViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CelulaCollectionViewCell", for: indexPath) as! CelulaCollectionViewCell
-        cell.setImage(with: self.viewModel.bookList[indexPath.row].id)
+        self.viewModel.selectBook(indexPath: indexPath.row)
+        cell.interactionDelegate = self
+        cell.configure(with: self.viewModel.selectedBook)
         return cell
     }
 }

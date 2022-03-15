@@ -8,9 +8,9 @@
 import Foundation
 
 struct BookAPIResponse: Codable {
-    let items: [Items]
+    let items: [Item]
 }
-struct Items: Codable {
+struct Item: Codable {
     let id: String
     let volumeInfo: VolumeInfo
 }
